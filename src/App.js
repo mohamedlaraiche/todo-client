@@ -18,6 +18,7 @@ const App = () => {
   // add a todo
 
   const addHandler = async (e) => {
+    window.location.href = "https://todo-client-navy.vercel.app/";
     e.preventDefault();
     if (!add) {
       swal("Please add a todo first");
@@ -75,6 +76,7 @@ const App = () => {
 
   // Update
   const updateHandler = (e) => {
+    window.location.href = "https://todo-client-navy.vercel.app/";
     e.preventDefault();
     console.log(editId);
     axios
