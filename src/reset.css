@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  margin: 0px auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Remove arrows from number input  */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media (min-width: 200px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 576px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 95%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .container {
+    width: 95%;
+  }
+}
