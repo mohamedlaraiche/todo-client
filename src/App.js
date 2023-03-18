@@ -18,7 +18,6 @@ const App = () => {
   // add a todo
 
   const addHandler = async (e) => {
-    window.location.href = "https://todo-client-navy.vercel.app/";
     e.preventDefault();
     if (!add) {
       swal("Please add a todo first");
@@ -31,6 +30,7 @@ const App = () => {
       setTodos([...Todos, { Todo: add }]);
       setAdd("");
     }
+    window.location.href = "https://todo-client-navy.vercel.app/";
   };
 
   // get Todos
@@ -76,7 +76,6 @@ const App = () => {
 
   // Update
   const updateHandler = (e) => {
-    window.location.href = "https://todo-client-navy.vercel.app/";
     e.preventDefault();
     console.log(editId);
     axios
@@ -89,6 +88,7 @@ const App = () => {
           Todos.map((todo) => (todo._id === editId ? { Todo: update } : todo))
         )
       );
+    window.location.href = "https://todo-client-navy.vercel.app/";
     setUpdate("");
     setModal("modalOff");
   };
