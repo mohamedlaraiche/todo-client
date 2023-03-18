@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-// import { v4 as uuidv4 } from "uuid";
 import "./style.css";
 
 const App = () => {
@@ -76,7 +75,7 @@ const App = () => {
 
   // Update
   const updateHandler = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(editId);
     axios
       .put(
