@@ -1,13 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+// import { v4 as uuidv4 } from "uuid";
 import "./style.css";
 
 const App = () => {
   const [Todos, setTodos] = useState([]);
   const [modal, setModal] = useState("modalOff");
   const [add, setAdd] = useState("");
-  const updateToggle = () => {
+  const [update, setUpdate] = useState("");
+  const [editId, setEditId] = useState(null);
+
+  const updateToggle = (id) => {
+    console.log(id);
+    setEditId(id);
     setModal("modalOn");
   };
   // add a todo
@@ -21,7 +27,7 @@ const App = () => {
         `https://fair-rose-caterpillar-yoke.cyclic.app/api/todos`,
         { Todo: add }
       );
-      console.log(response);
+      console.log(response.data);
       setTodos([...Todos, { Todo: add }]);
       setAdd("");
     }
@@ -67,6 +73,24 @@ const App = () => {
 
     console.log(`id ${id}, has been deleted`);
   };
+
+  // Update
+  const updateHandler = (e) => {
+    e.preventDefault();
+    console.log(editId);
+    axios
+      .put(
+        `https://fair-rose-caterpillar-yoke.cyclic.app/api/todos/${editId}`,
+        { Todo: update }
+      )
+      .then(() =>
+        setTodos(
+          Todos.map((todo) => (todo._id === editId ? { Todo: update } : todo))
+        )
+      );
+    setUpdate("");
+    setModal("modalOff");
+  };
   return (
     <div className="container box">
       <div className="todoHead">
@@ -89,7 +113,9 @@ const App = () => {
               <p> {todo.Detail} </p>
             </div>
             <div className="mngBtns">
-              <button className="updateBtn" onClick={(e) => updateToggle(e)}>
+              <button
+                className="updateBtn"
+                onClick={(e) => updateToggle(todo._id)}>
                 Update
               </button>
               <button
@@ -102,17 +128,31 @@ const App = () => {
             </div>
             <div id="myModal" className={modal}>
               <div className="modal-content">
-                <button onClick={() => setModal("modalOff")}>X</button>
-                <input
-                  style={{ color: "black" }}
-                  type="text"
-                  placeholder="UpdateTodo"
-                  onChange={(e) => {}}
-                />
+                <div className="closeHolder">
+                  <button
+                    className="close"
+                    onClick={() => setModal("modalOff")}>
+                    X
+                  </button>
+                </div>
+                <form
+                  onSubmit={(e) => {
+                    updateHandler(e, todo._id);
+                  }}>
+                  <input
+                    style={{ color: "black" }}
+                    type="text"
+                    value={update}
+                    placeholder="UpdateTodo"
+                    onChange={(e) => {
+                      setUpdate(e.target.value);
+                    }}
+                  />
 
-                <button onClick={(e) => {}} className="updateBtn">
-                  Update
-                </button>
+                  <button type="submit" className="updateBtn">
+                    Update Todo
+                  </button>
+                </form>
               </div>
             </div>
           </div>

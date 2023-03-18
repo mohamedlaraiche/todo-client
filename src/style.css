@@ -101,7 +101,7 @@ body {
   cursor: pointer;
 }
 
-.todosHolder .mngBtns .updateBtn {
+.updateBtn {
   background-color: var(--update);
 }
 
@@ -109,7 +109,7 @@ body {
   background-color: var(--delete);
 }
 
-.todosHolder .mngBtns .updateBtn:hover {
+.updateBtn:hover {
   background-color: #1fcabcc2;
 }
 
@@ -212,4 +212,47 @@ body {
     margin: 0 2px;
     padding: 10px 10px;
   }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+.closeHolder {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+.modal-content .close {
+  color: black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b77474;
+  border: none;
+}
+.modal-content input {
+  padding: 8px;
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+.modal-content .updateBtn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 3px;
+  margin: 10px;
+  cursor: pointer;
+}
+.modal-content form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
