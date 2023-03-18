@@ -30,7 +30,7 @@ const App = () => {
       setTodos([...Todos, { Todo: add }]);
       setAdd("");
     }
-    window.location.href = "https://todo-client-navy.vercel.app/";
+    window.location.href = "https://moatodoapp.vercel.app/";
   };
 
   // get Todos
@@ -49,7 +49,6 @@ const App = () => {
 
   const DeleteTodo = (e, id) => {
     e.preventDefault();
-    console.log(id);
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -70,8 +69,6 @@ const App = () => {
         swal("Your Todo is safe!");
       }
     });
-
-    console.log(`id ${id}, has been deleted`);
   };
 
   // Update
@@ -88,7 +85,7 @@ const App = () => {
           Todos.map((todo) => (todo._id === editId ? { Todo: update } : todo))
         )
       );
-    window.location.href = "https://todo-client-navy.vercel.app/";
+    window.location.href = "https://moatodoapp.vercel.app/";
     setUpdate("");
     setModal("modalOff");
   };
