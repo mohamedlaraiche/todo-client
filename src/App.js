@@ -75,7 +75,7 @@ const App = () => {
 
   // Update
   const updateHandler = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     console.log(editId);
     axios
       .put(
