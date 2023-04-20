@@ -32,7 +32,9 @@ const App = () => {
       setTodos([...Todos, { Todo: add }]);
       setAdd("");
     }
-    window.location.replace("https://todo-client-navy.vercel.app");
+    setTimeout(() => {
+      window.location.replace("https://todo-client-navy.vercel.app");
+    }, 2000);
   };
 
   // get Todos
@@ -85,7 +87,9 @@ const App = () => {
           Todos.map((todo) => (todo._id === editId ? { Todo: update } : todo))
         )
       );
-    window.location.replace("https://todo-client-navy.vercel.app");
+    setTimeout(() => {
+      window.location.replace("https://todo-client-navy.vercel.app");
+    }, 2000);
 
     setUpdate("");
     setModal("modalOff");
