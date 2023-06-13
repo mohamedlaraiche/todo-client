@@ -23,24 +23,22 @@ const App = () => {
       swal("Please add a todo first");
     } else {
       const response = await axios.post(
-        `https://todo-moa.up.railway.app/api/todos/create`,
+        `https://todo-api-production-8e84.up.railway.app/api/todos/create`,
         {
           Todo: add,
         }
       );
       console.log(response.data);
-      setTodos([...Todos, { Todo: add }]);
+      setTodos((todo) => [...todo, { Todo: add }]);
       setAdd("");
-    }
-    setTimeout(() => {
       window.location.replace("https://todo-client-navy.vercel.app");
-    }, 2000);
+    }
   };
 
   // get Todos
   const getTodos = async () => {
     const response = await axios.get(
-      "https://todo-moa.up.railway.app/api/todos"
+      "https://todo-api-production-8e84.up.railway.app/api/todos"
     );
     const data = await response.data;
     setTodos(data.data);
@@ -65,7 +63,9 @@ const App = () => {
         swal("Poof! Your Todo has been deleted!", {
           icon: "success",
         });
-        axios.delete(`https://todo-moa.up.railway.app/api/todos/${id}`);
+        axios.delete(
+          `https://todo-api-production-8e84.up.railway.app/api/todos/${id}`
+        );
         const newList = Todos.filter((todo) => todo._id !== id);
         setTodos(newList);
       } else {
@@ -75,21 +75,22 @@ const App = () => {
   };
 
   // Update
-  const updateHandler = (e) => {
+  const updateHandler = async (e) => {
     e.preventDefault();
     console.log(editId);
-    axios
-      .put(`https://todo-moa.up.railway.app/api/todos/${editId}`, {
-        Todo: update,
-      })
+    await axios
+      .put(
+        `https://todo-api-production-8e84.up.railway.app/api/todos/${editId}`,
+        {
+          Todo: update,
+        }
+      )
       .then(() =>
         setTodos(
           Todos.map((todo) => (todo._id === editId ? { Todo: update } : todo))
         )
       );
-    setTimeout(() => {
-      window.location.replace("https://todo-client-navy.vercel.app");
-    }, 2000);
+    window.location.replace("https://todo-client-navy.vercel.app");
 
     setUpdate("");
     setModal("modalOff");
