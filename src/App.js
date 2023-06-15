@@ -23,7 +23,7 @@ const App = () => {
       swal("Please add a todo first");
     } else {
       const response = await axios.post(
-        `https://todo-api-production-8e84.up.railway.app/api/todos/create`,
+        `https://todo-api-production-015a.up.railway.app/api/todos/create`,
         {
           Todo: add,
         }
@@ -38,7 +38,7 @@ const App = () => {
   // get Todos
   const getTodos = async () => {
     const response = await axios.get(
-      "https://todo-api-production-8e84.up.railway.app/api/todos"
+      "https://todo-api-production-015a.up.railway.app/api/todos"
     );
     const data = await response.data;
     setTodos(data.data);
@@ -64,7 +64,7 @@ const App = () => {
           icon: "success",
         });
         axios.delete(
-          `https://todo-api-production-8e84.up.railway.app/api/todos/${id}`
+          `https://todo-api-production-015a.up.railway.app/api/todos/${id}`
         );
         const newList = Todos.filter((todo) => todo._id !== id);
         setTodos(newList);
@@ -80,7 +80,7 @@ const App = () => {
     console.log(editId);
     await axios
       .put(
-        `https://todo-api-production-8e84.up.railway.app/api/todos/${editId}`,
+        `https://todo-api-production-015a.up.railway.app/api/todos/${editId}`,
         {
           Todo: update,
         }
